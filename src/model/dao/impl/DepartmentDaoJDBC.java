@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import db.DB;
 import db.DbException;
@@ -40,13 +43,12 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
 	@Override
 	public Department findById(Integer id) {
-		
+
 		PreparedStatement st = null;
 		ResultSet rs = null;
 
 		try {
-			st = conn.prepareStatement(
-					"SELECT department.* FROM department WHERE department.Id = ?");
+			st = conn.prepareStatement("SELECT department.* FROM department WHERE department.Id = ?");
 
 			st.setInt(1, id);
 			rs = st.executeQuery();
@@ -77,10 +79,33 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
 	@Override
 	public List<Department> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+
+		try {
+			st = conn.prepareStatement("SELECT department.* FROM department ORDER BY Name");
+
+			rs = st.executeQuery();
+			List<Department> deps = new ArrayList<>();
+
+			while (rs.next()) {
+				Department dep = instatiateDepartment(rs);
+				deps.add(dep);
+			}
+
+			return deps;
+
+		} catch (SQLException e) {
+
+			throw new DbException(e.getMessage());
+
+		} finally {
+
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+		}
 	}
-	
+
 	private Department instatiateDepartment(ResultSet rs) throws SQLException {
 		Department dep = new Department();
 

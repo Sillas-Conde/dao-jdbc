@@ -12,14 +12,9 @@ public class Program {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Department dep = new Department(0,"Books");
-		System.out.println(dep);
-		
-		Date birth = new Date();
-		Seller seller = new Seller(0, "Sillas", "sillasconde@outlook.com", birth,2500.0, dep);
-		
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
+		Seller seller = sellerDao.findById(3);
 		
 		System.out.println(seller);
 		

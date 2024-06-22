@@ -38,11 +38,11 @@ public class Program {
 		System.out.println("================================");
 		System.out.println("TEST insert:");
 		department = new Department(1,null);
-		seller = new Seller(11, "Kleiton", "kleiton@gmail.com", new Date(), 5000.0, department);
-		//sellerDao.insert(seller);
+		Seller insertedSeller = new Seller(null, "teste", "teste@gmail.com", new Date(), 20000.0, department);
+		sellerDao.insert(insertedSeller);
 		System.out.println("Inserted Id:");
 		System.out.println(
-				sellerDao.findById(seller.getId())
+				sellerDao.findById(insertedSeller.getId())
 		);
 		
 		System.out.println("================================");
@@ -54,6 +54,17 @@ public class Program {
 		System.out.println("Updated Id:");
 		System.out.println(
 				sellerDao.findById(seller.getId())
+		);
+		
+		System.out.println("================================");
+		System.out.println("TEST delete:");
+		System.out.println(
+				sellerDao.findById(insertedSeller.getId())
+		);	
+		sellerDao.deleteById(insertedSeller.getId());
+		System.out.println("Deleted Id:");
+		System.out.println(
+				sellerDao.findById(insertedSeller.getId())
 		);	
 		
 		

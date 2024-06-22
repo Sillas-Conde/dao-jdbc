@@ -38,6 +38,14 @@ public class ProgramDepartment {
 		System.out.println(departmentDao.findById(dep.getId()));
 		departmentDao.deleteById(dep.getId());
 		System.out.println(departmentDao.findById(dep.getId()));
+		
+		System.out.println("==========================");
+		System.out.println("TEST update");
+		dep = departmentDao.findById(6);
+		System.out.println(departmentDao.findById(dep.getId()));
+		dep.setName("Mecatrônica");
+		departmentDao.update(dep);
+		System.out.println(departmentDao.findById(dep.getId()));
 
 	}
 

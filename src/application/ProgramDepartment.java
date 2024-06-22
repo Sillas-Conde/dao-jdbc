@@ -27,7 +27,11 @@ public class ProgramDepartment {
 			System.out.println(depExemple);
 		}
 		
-		
+		System.out.println("==========================");
+		System.out.println("TEST insert");
+		dep = new Department(null,"Food");
+		departmentDao.insert(dep);
+		System.out.println(dep);
 
 	}
 

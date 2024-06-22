@@ -1,7 +1,7 @@
 Data Access Object - Java
 
 
-Implementação de uma relação vendedo-departamento, com o objetivo de fixar os conhecimentos de acesso e modificação de Banco de dados usando conexões JDBC.
+Implementação de uma relação vendedor-departamento, com o objetivo de fixar os conhecimentos de acesso e modificação de Banco de dados usando conexões JDBC.
 
 São implementados métodos para realizar as seguintes operações em banco de dados:
 

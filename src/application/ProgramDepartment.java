@@ -29,9 +29,15 @@ public class ProgramDepartment {
 		
 		System.out.println("==========================");
 		System.out.println("TEST insert");
-		dep = new Department(null,"Food");
+		dep = new Department(null,"Teste");
 		departmentDao.insert(dep);
 		System.out.println(dep);
+		
+		System.out.println("==========================");
+		System.out.println("TEST deleteById");
+		System.out.println(departmentDao.findById(dep.getId()));
+		departmentDao.deleteById(dep.getId());
+		System.out.println(departmentDao.findById(dep.getId()));
 
 	}
 
